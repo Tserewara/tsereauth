@@ -37,6 +37,10 @@ def check_password(user, password):
         raise Exception('Wrong credentials')
     return True
 
+@application.route('/')
+def home():
+    return '<h1>Welcome from Elastic Beanstalk</h1>'
+
 
 @application.route('/login', methods=['POST'])
 def login():
@@ -62,6 +66,7 @@ def login():
 def secret():
     current_user_id = get_jwt_identity()
     return jsonify({'msg': f'This route is secret {current_user_id}'}), 200
+
 
 
 if __name__ == '__main__':
