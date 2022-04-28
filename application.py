@@ -1,6 +1,6 @@
 import datetime
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, \
     get_jwt_identity
@@ -37,9 +37,10 @@ def check_password(user, password):
         raise Exception('Wrong credentials')
     return True
 
+
 @application.route('/')
 def home():
-    return '<h1>Welcome from Elastic Beanstalk</h1>'
+    return render_template('index.html')
 
 
 @application.route('/login', methods=['POST'])
