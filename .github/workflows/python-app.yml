@@ -49,4 +49,6 @@ jobs:
     # Deploy to (or Create) the Elastic Beanstalk environment
     - name: Create test environment & deploy
       run: |
+        eb setenv MONGO_URI=FAKE_URI
+        echo $MONGO_URI
         (eb use test-environment && eb status test-environment && eb deploy) || eb create test-environment
